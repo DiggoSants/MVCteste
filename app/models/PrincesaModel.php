@@ -34,7 +34,9 @@ class PrincesaModel extends Model
             'id'=>$id,
             'nome'=>$nome,
             'reino'=>$reino,
-            'poderes'=>$poderes,'caracteristicas'=>$caracteristicas,'companheiro'=>$companheiro]);
+            'poderes'=>$poderes,
+            'caracteristicas'=>$caracteristicas,
+            'companheiro'=>$companheiro]);
     }
 
     public function deletePrincesa($id)
