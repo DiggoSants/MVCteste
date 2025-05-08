@@ -26,3 +26,4 @@ if (method_exists($controller, $action)) {
 } else {
     die('Ação não encontrada.');
 }
+oi
