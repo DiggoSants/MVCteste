@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="css/cadastrar.css">
 </head>
 <body>
+    <div class="container py-5"><?= isset($princesa) ? 'Editar Princesa' : 'Adicionar Princesa' ?></div>
     <div class="container py-5">
         <h1 class="text-center mb-5">Cadastro de Princesas Disney</h1>
-        
-        <form method="POST" action="salvar.php">
-            <input type="hidden" name="id" value="<?= htmlspecialchars($princesa['id'] ?? '') ?>">
             
             <div class="form-section">
                 <div class="mb-3">
@@ -52,9 +50,8 @@
                            value="<?= htmlspecialchars($princesa['companheiro'] ?? '') ?>">
                 </div>
             </div>
-            <a href="/MVCteste/index.php" class="btn btn-primary">Salvar</a>
-            <a href="/MVCteste/app/views/lista.php" class="btn btn-danger">Cancelar</a>
-
+            <button type="submit" class="btn btn-primary"><?= isset($princesa) ? 'Atualizar' : 'Salvar' ?></button>
+            <a href="/MVCteste/princesa/list" class="btn btn-secondary">Cancelar</a>
             
         </form>
     </div>

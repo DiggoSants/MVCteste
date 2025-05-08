@@ -3,43 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Painel das Princesas</title>
+    <title>Lista das Princesas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/lista.css">
-
 </head>
 <body>
     <div class="container py-5">
         <h1 class="text-center mb-5">Princesas Cadastradas</h1>
-        
-        <div class="text-end mb-4">
-            <a href="/MVCteste/app/views/cadastrar.php" class="btn btn-success">
-                <i class="bi bi-plus-circle"></i> Nova Princesa
-            </a>
-        </div>
-        
-        <div class="row">
-            <?php foreach ($princesas as $princesa): ?>
-            <div class="col-md-4">
-                <div class="card princesa-card">
-                    <div class="card-header bg-primary text-white">
-                        <h5 class="card-title mb-0"><?= htmlspecialchars($princesa['nome']) ?></h5>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text">
-                        </p>
-                        <p class="card-text"><strong>Companheiro:</strong> <?= htmlspecialchars($princesa['companheiro']) ?></p>
 
-                    </div>
-                    <div class="card-footer">
-                        <a href="/princesa/excluir/<?= $princesa['id'] ?>" class="btn btn-sm btn-danger" 
-                           onclick="return confirm('Tem certeza que deseja excluir esta princesa?')">
-                            <i class="bi bi-trash"></i>Excluir</a>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
+        <?php
+        if (isset($_SESSION['message'])) {
+            $message = $_SESSION['message'];
+            $type = htmlspecialchars($message['type']);
+            echo '<div class="alert alert-' . $type . '">' . htmlspecialchars($message['text']) . '</div>';
+            unset($_SESSION['message']);
+        }
+        ?>
+        
+        <a href="/MVCteste/princesa/create" class="btn btn-success">Nova Princesa</a>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Reino</th>
+                    <th>Poderes</th>
+                    <th>Características</th>
+                    <th>Companheiro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($princesas as $princesa): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($princesa['id']) ?></td>
+                        <td><?= htmlspecialchars($princesa['nome']) ?></td>
+                        <td><?= htmlspecialchars($princesa['reino']) ?></td>
+                        <td><?= htmlspecialchars($princesa['poderes']) ?></td>
+                        <td><?= htmlspecialchars($princesa['caracteristicas']) ?></td>
+                        <td><?= htmlspecialchars($princesa['companheiro']) ?></td>
+                        <td>
+                            <a href="/princesa/excluir/<?= htmlspecialchars($princesa['id']) ?>" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Tem certeza que deseja excluir esta princesa?')">
+                                <i class="bi bi-trash"></i> Excluir
+                            </a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
