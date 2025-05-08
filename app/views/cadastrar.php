@@ -24,14 +24,6 @@
                     <input type="text" class="form-control" id="reino" name="reino"
                            value="<?= htmlspecialchars($princesa['reino'] ?? '') ?>">
                 </div>
-            </div>
-            
-            <div class="form-section">
-                <div class="mb-3">
-                    <label for="historia" class="form-label">História</label>
-                    <textarea class="form-control" id="historia" name="historia" rows="4"><?= htmlspecialchars($princesa['historia'] ?? '') ?></textarea>
-                </div>
-                
                 <div class="mb-3">
                     <label for="poderes" class="form-label">Poderes/Habilidades</label>
                     <textarea class="form-control" id="poderes" name="poderes" rows="3"><?= htmlspecialchars($princesa['poderes'] ?? '') ?></textarea>
@@ -41,15 +33,14 @@
                     <label for="caracteristicas" class="form-label">Características Únicas</label>
                     <textarea class="form-control" id="caracteristicas" name="caracteristicas" rows="3"><?= htmlspecialchars($princesa['caracteristicas'] ?? '') ?></textarea>
                 </div>
-            </div>
             
-            <div class="form-section">
                 <div class="mb-3">
                     <label for="companheiro" class="form-label">Companheiro</label>
                     <input type="text" class="form-control" id="companheiro" name="companheiro"
                            value="<?= htmlspecialchars($princesa['companheiro'] ?? '') ?>">
                 </div>
             </div>
+            
             <button type="submit" class="btn btn-primary"><?= isset($princesa) ? 'Atualizar' : 'Salvar' ?></button>
             <a href="/MVCteste/princesa/list" class="btn btn-secondary">Cancelar</a>
             

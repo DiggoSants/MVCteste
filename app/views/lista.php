@@ -44,13 +44,12 @@
                         <td><?= htmlspecialchars($princesa['caracteristicas']) ?></td>
                         <td><?= htmlspecialchars($princesa['companheiro']) ?></td>
                         <td>
-                            <a href="/princesa/excluir/<?= htmlspecialchars($princesa['id']) ?>" class="btn btn-sm btn-danger"
+                            <a href="/princesa/excluir/id=<?= htmlspecialchars($princesa['id']) ?>" class="btn btn-sm btn-danger"
                                onclick="return confirm('Tem certeza que deseja excluir esta princesa?')">
                                 <i class="bi bi-trash"></i> Excluir
                             </a>
                         </td>
-                    </tr>
-                <?php endforeach; ?>
+                    </tr> 
             </tbody>
         </table>
     </div>
