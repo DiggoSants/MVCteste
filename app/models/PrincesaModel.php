@@ -8,7 +8,6 @@ class PrincesaModel extends Model
         $stmt = $this->db->query("SELECT * FROM princesas_disney");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     public function getPrincesaById($id)
     {
         $stmt = $this->db->prepare("SELECT * FROM princesas_disney WHERE id = :id");
@@ -30,11 +29,15 @@ class PrincesaModel extends Model
 
     public function updatePrincesas($id, $nome, $reino, $poderes, $caracteristicas, $companheiro)
     {
-        $stmt = $this->db->prepare("UPDATE pokemons SET name = :name, type = :type, description = :description WHERE id = :id");
-        return $stmt->execute(['id'=>$id,'nome'=>$nome,'reino'=>$reino,'poderes'=>$poderes,'caracteristicas'=>$caracteristicas,'companheiro'=>$companheiro]);
+        $stmt = $this->db->prepare("UPDATE princesas_disney SET nome = :nome, reino = :reino, poderes = :poderes, caracteristicas = :caracteristicas, companheiro = :companheiro WHERE id = :id");
+        return $stmt->execute([
+            'id'=>$id,
+            'nome'=>$nome,
+            'reino'=>$reino,
+            'poderes'=>$poderes,'caracteristicas'=>$caracteristicas,'companheiro'=>$companheiro]);
     }
 
-    public function delete($id)
+    public function deletePrincesa($id)
     {
         $stmt = $this->db->prepare("DELETE FROM princesas_disney WHERE id = :id");
         return $stmt->execute(['id' => $id]);
